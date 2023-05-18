@@ -32,6 +32,11 @@ const initApp = () => {
                 itemArray = [];
             }
         });
+    });
+
+    const deleteButton = document.querySelector(`.delete`);
+    deleteButton.addEventListener(`click`, () => {
+        currentValueElement.value = currentValueElement.value.slice(0, -1);
     })
 
 }
