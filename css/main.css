@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    font-family:"montserrat", monospace;
+    color: black;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    background: rgb(2,0,36);
+    background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(163,163,163,1) 25%, rgb(208, 107, 26) 40%, rgba(0,212,255,1) 100%);
+    display: grid;
+    place-content: center;
+}
+
+.container {
+    width: 90vw;
+    max-width: 500px;
+    background-color: #cecece;
+    display: grid;
+    gap: 1px;
+    grid-template-areas: 
+        "header header header header"
+        "display display display display";
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-rows: 20px minmax(120px, auto) repeat(5, minmax(0, 70px));
+}
+
+.container:focus-within {
+    background-color: rgba(225, 225, 225, .5);
+}
+
+.header {
+    grid-area: header;
+    padding: .25rem .5rem;
+    display: flex;
+    align-items: center;
+}
+
+.header > h1 {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: .85rem;
+    font-weight: normal;
+}
+
+.display {
+    grid-area: display;
+    padding: 3px 5px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.previousValue {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.currentValue {
+    font-size: 3rem;
+    font-weight: bolder;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    text-align: right;
+    font-family: "Roboto Mono", monospace;
+}
+
+button {
+    display: grid;
+    place-content: center;
+    font-size: 1.5rem;
+    padding: .5rem;
+    background-color: whitesmoke;
+    outline: none;
+}
+
+button:hover,
+button:active {
+    background-color: rgba(255, 255, 255, .2);
+    box-shadow: 1px 1px 10px rgb(0, 115, 10);
+    filter: brightness(120%);
+}
+
+.function {
+    background-color: rgb(213, 213, 213);
+}
+
+.equals {
+    background-color: rgb(106, 177, 233);
+}
+
+.equals:hover,
+.equals:active {
+    background-color: rgb(0, 18, 138);
+    color: whitesmoke;
+    filter: brightness(120%);
+}
+
+@media screen and (min-width: 768px) {
+    html {
+        font-size: 22px;
+    }
+    .container {
+        grid-template-rows: 35px minmax(95px, auto) repeat(5, minmax(0, 95px));
+    }
+}
