@@ -37,6 +37,12 @@ const initApp = () => {
     const deleteButton = document.querySelector(`.delete`);
     deleteButton.addEventListener(`click`, () => {
         currentValueElement.value = currentValueElement.value.slice(0, -1);
+    });
+
+    const signChangeButton = document.querySelector(`.signChange`);
+    signChangeButton.addEventListener(`click`, () => {
+        currentValueElement.value = parseFloat(currentValueElement.value) * -1;
+
     })
 
 }
