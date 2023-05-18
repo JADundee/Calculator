@@ -23,6 +23,22 @@ const initApp = () => {
         });
     });
 
+    const opButtons = document.querySelectorAll(`.operator`);
+    opButtons.forEach(button => {
+        button.addEventListener(`click`, (event) => {
+            
+            if (newNumberFlag) {
+                previousValueElement.textContent = "";
+                itemArray = [];
+            }
+
+            const newOperator = event.target.textContent;
+            const currentVal = currentValueElement.value;
+
+            // 46:37
+        });
+    });
+
     const clearButtons = document.querySelectorAll(`.clear, .clearEntry`);
     clearButtons.forEach(button => {
         button.addEventListener(`click`, (event) => {
@@ -42,8 +58,7 @@ const initApp = () => {
     const signChangeButton = document.querySelector(`.signChange`);
     signChangeButton.addEventListener(`click`, () => {
         currentValueElement.value = parseFloat(currentValueElement.value) * -1;
-
-    })
+    });
 
 }
 
