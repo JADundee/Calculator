@@ -63,6 +63,14 @@ const initApp = () => {
                       ${equationObject[`num2`]}`;
 
                       const newValue = calculate(equationString, currentValueElement);
+
+                      previousValueElement.textContent = `${newValue} ${newOperator}`;
+
+
+                      //start new equation
+                      itemArray = [newValue, newOperator];
+                      newNumberFlag = true;
+                      console.log(equationArray);
             }
         });
     });
