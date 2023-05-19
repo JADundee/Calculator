@@ -35,7 +35,35 @@ const initApp = () => {
             const newOperator = event.target.textContent;
             const currentVal = currentValueElement.value;
 
-            // 46:37
+            // Needs number input to get action
+            if (!itemArray.length && currentVal == 0) return;
+
+            if (!itemArray.length) {
+                itemArray.push(currentVal, newOperator);
+                previousValueElement.textContent = 
+                    `${currentVal} 
+                     ${newOperator}`;
+                return newNumberFlag = true;
+            }
+
+            if (itemArray.length) {
+                
+                itemArray.push(currentVal); // 3rd element
+
+                const equationObject = {
+                    num1: parseFloat(itemArray[0]),
+                    num2: parseFloat(currentVal),
+                    op: itemArray[1]
+                }
+
+                equationArray.push(equationObject);
+                const equationString = 
+                    `${equationObject[`num1`]}
+                     ${equationObject[`op`]}
+                      ${equationObject[`num2`]}`;
+
+                      const newValue = calculate(equationString, currentValueElement);
+            }
         });
     });
 
@@ -63,3 +91,11 @@ const initApp = () => {
 }
 
 document.addEventListener("DOMContentLoaded", initApp);
+
+const calculate = (equation, currentValueElement) => {
+    const regex = /(^[*/=])|(\s)/g;
+    equation.replace(regex, ``);
+    const divByZero = /(\/0)/.test(equation);
+    if (divByZero) return currentValueElement.value = "Retard";
+    return currentValueElement.value = eval(equation);
+}
