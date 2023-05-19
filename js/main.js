@@ -75,6 +75,43 @@ const initApp = () => {
         });
     });
 
+    const equalsButton = document.querySelector(`.equals`);
+    equalsButton.addEventListener("click", () => {
+        const currentVal = currentValueElement.value;
+        let equationObject;
+
+        // Equals to repeat equation
+        if(!itemArray.length && equationArray.length) {
+            const lastEquation = equationArray[equationArray.length - 1];
+            equationObject = {
+                num1: parseFloat(currentVal),
+                num2: lastEquation.num2,
+                op: lastEquation.op
+            }
+        } else if (!itemArray.length) {
+            return currentVal;
+        } else {
+            itemArray.push(currentVal);
+            equationObject = {
+                num1: parseFloat(itemArray[0]),
+                num2: parseFloat(currentVal),
+                op: itemArray[1]
+            }
+        }
+
+        equationArray.push(equationObject);
+
+        const equationString = 
+            `${equationObject[`num1`]} ${equationObject[`op`]} ${equationObject[`num2`]}`;
+            calculate(equationString, currentValueElement);
+
+            previousValueElement.textContent = `${equationString} =`;
+
+            newNumberFlag = true;
+            itemArray = [];
+            console.log(equationArray);
+    });
+
     const clearButtons = document.querySelectorAll(`.clear, .clearEntry`);
     clearButtons.forEach(button => {
         button.addEventListener(`click`, (event) => {
